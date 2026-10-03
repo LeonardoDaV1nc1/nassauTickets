@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nassauTickets - Gestão de Filas</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            color: #004a87;
+            font-size: 2.2rem;
+        }
+        header p {
+            color: #666;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 280px;
+        }
+        .card h2 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: #004a87;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 8px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-sp { background-color: #ffc107; color: #333; }
+        .btn-sp:hover { background-color: #e0a800; }
+        
+        .btn-se { background-color: #007bff; color: #fff; }
+        .btn-se:hover { background-color: #0056b3; }
+
+        .btn-sg { background-color: #28a745; color: #fff; }
+        .btn-sg:hover { background-color: #218838; }
+
+        #resultado-senha {
+            margin-top: 15px;
+            padding: 12px;
+            background: #e9ecef;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        ul li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        ul li:last-child {
+            border-bottom: none;
+        }
+        .badge {
+            background: #17a2b8;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>nassauTickets</h1>
+        <p>Sistema de Controle e Triagem de Atendimento</p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Gerir Atendimento</h2>
+            <button class="btn btn-sp" onclick="emitirSenha('SP')">Prioritário (SP)</button>
+            <button class="btn btn-se" onclick="emitirSenha('SE')">Estudante / Geral (SE)</button>
+            <button class="btn btn-sg" onclick="emitirSenha('SG')">Geral / Secretaria (SG)</button>
+            <button class="btn" style="background-color: #6c757d; color: white; margin-top: 15px;" onclick="chamarProxima()">Chamar Próximo (Guichê 1)</button>
+            
+            <div id="resultado-senha">Nenhuma senha emitida ainda</div>
+        </div>
+
+        <div class="card">
+            <h2>Fila de Espera</h2>
+            <ul id="lista-fila">
+                <li>Carregando fila...</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
